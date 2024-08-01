@@ -21,25 +21,4 @@ Route::put('/contacts/{post}', ContactController::class .'@update')->name('conta
  
 Route::delete('/contacts/{post}', ContactController::class .'@destroy')->name('contacts.destroy');
 
-
-//Route::resource('contacts', Contact::class);
-// Route::get("index",[Contact::class,'index'])->name('index');
-// Route::get("create",[Contact::class,'create'])->name('create');
-// Route::post("Store",[Contact::class,'Store'])->name('Store');
-// Route::get("Show",[Contact::class,'Show'])->name('Show');
-// Route::get("edit",[Contact::class,'edit'])->name('edit');
-// Route::get("Update",[Contact::class,'Update'])->name('Update');
-
-// Route::get("index",[ContactController::class,[ContactController::class,'index'])->name('index');//GET /contacts: List all contacts
-
-// GET /contacts/create: Show the form to create a new contact
-
-// POST /contacts: Store a new contact
-
-// GET /contacts/{id}: Show a specific contact
-
-// GET /contacts/{id}/edit: Show the form to edit a contact
-
-// PUT /contacts/{id}: Update a contact
-
-// DELETE /contacts/{id}: Delete a contac
+ 
