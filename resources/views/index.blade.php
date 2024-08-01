@@ -3,12 +3,23 @@
  
  
 <div class="container">
-    <h1>Contacts</h1>
-    <a href="{{ route('contacts.create') }}" class="btn btn-primary">Create New Contact</a>
+    <h1>Contacts List</h1>
+
+ 
+
+   
     <form method="GET" action="{{ route('contacts.index') }}">
-        <input type="text" name="search" placeholder="Search by name or email">
+        <fieldset class="accent">  <legend>Search</legend>  <input type="text" name="search" placeholder="Search by name or email">
         <button type="submit">Search</button>
+    </fieldset>
     </form>
+
+    <h3><a href="{{ route('contacts.create') }}" class="btn btn-primary">Create New Contact</a></h3>
+    @if(session()->has('message'))
+    <div class="alert alert-success bg-attention" style="font-color:#000; text-align:center;">
+        {{ session()->get('message') }}
+    </div>
+    @endif
     <table class="table">
         <thead>
             <tr>
@@ -21,7 +32,14 @@
             </tr>
         </thead>
         <tbody>
+
+          @if( count( $contacts) == 0) 
+           <tr><td colspan="6">Data not Found!</td></tr>
+         @else       
           
+          
+
+
             @foreach ($contacts as $contact)
                 <tr>
                     <td>{{ $contact->name }}</td>
@@ -40,6 +58,9 @@
                     </td>
                 </tr>
             @endforeach
+
+
+            @endif
         </tbody>
     </table>
 </div>

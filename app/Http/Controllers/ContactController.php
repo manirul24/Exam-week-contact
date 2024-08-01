@@ -13,7 +13,7 @@ class ContactController extends Controller
     $contacts = DB::table('Contacts')->get();
     if ($request->has('search')) {
         $contacts = DB::table('Contacts')->where('name', 'like', '%' . $request->search . '%')
-        ->orWhere('email', 'like', '%' . $request->search . '%')
+        ->orWhere('email', 'like', '%' . $request->search . '%')         
         ->get();
                // $contacts->where('name', 'like', '%' . $request->search . '%')
                      //     ->orWhere('email', 'like', '%' . $request->search . '%');
@@ -60,7 +60,7 @@ class ContactController extends Controller
 
         Contact::create($request->all());
 
-        return redirect()->route('contacts.index')->with('success', 'Contact created successfully.');
+        return redirect()->route('contacts.index')->with('message', 'Contact created successfully.');
     }
 
     public function show(Request $request)
@@ -90,7 +90,7 @@ class ContactController extends Controller
             'phone' => $request->phone, 'address' => $request->address]
         );
       
-        return redirect()->route('contacts.index')->with('success', 'Contact updated successfully.');
+        return redirect()->route('contacts.index')->with('message', 'Contact updated successfully.');
     }
 
 
@@ -120,7 +120,7 @@ class ContactController extends Controller
     {
         Contact::whereId($request->post)->delete();
 
-        return redirect()->route('contacts.index')->with('success', 'Contact deleted successfully.');
+        return redirect()->route('contacts.index')->with('message', 'Contact deleted successfully.');
     }
 
 

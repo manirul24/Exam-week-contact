@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Contact;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,12 +15,13 @@ class DatabaseSeeder extends Seeder
     {
 
 
-        Task::truncate();
-        for($i=0;$i<10;$i++){
-            contact::create([
-                'name' => fake()->sentence(10),
-                'description' => fake()->sentence(20),
-                'due_date' => now()->addDays(rand(1,7))
+       // Contact::truncate();
+        for($i=6;$i<10;$i++){
+            Contact::create([
+                'name' => fake()->name(3),
+                'email' => 'testemail'.$i.'@gmail.com',
+                'phone' => fake()->unique()->e164PhoneNumber(),
+                'address' => fake()->sentence(20),
             ]);
         }
 
